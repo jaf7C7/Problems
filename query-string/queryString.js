@@ -10,6 +10,10 @@
  *
  * 2. Create a query string from an object (reverse of 1.)
  *
+ * 3. Handle percent encoding
+ *
+ * Source: https://www.youtube.com/watch?v=7CWM-jLowpk&list=PLtuWfrF8FU5xGKn2kb8OT2tAKZXPjEuWI&index=1
+ *
  */
 const testCases = [
     // Base case
