@@ -32,7 +32,9 @@ const capitalizeEveryOtherLetter = str => forEachOdd(
 )
 
 
-const closeDivTags = html => forEachOdd(html, subStr => subStr + '/', 'div>')
+const closeDivTags = html => forEachOdd(
+    html, subStr => subStr + (subStr.endsWith('/') ? '' : '/'), 'div>'
+)
 
 
 testFunction(capitalizeEveryOtherLetter, [
@@ -43,8 +45,9 @@ testFunction(capitalizeEveryOtherLetter, [
 ])
 
 
-// TODO: '<div><div>hello</div></div>' -> '<div><div>hello</div></div>'
 testFunction(closeDivTags, [
     ['<div>hello<div>', '<div>hello</div>'],
-    ['', '']
+    ['', ''],
+    ['<div><div>hello<div><div>', '<div></div>hello<div></div>'],
+    ['<div>hello</div>', '<div>hello</div>']
 ])
