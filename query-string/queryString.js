@@ -16,7 +16,6 @@
  *
  */
 const testCases = [
-    // Base case
     [
         '?foo=hello&bar=world&baz',
         {
@@ -25,7 +24,6 @@ const testCases = [
             baz: 'true'
         }
     ],
-    // Edge cases
     ['?', {}],
     ['?foo=', {foo: ''}],
     ['?foo=hello&foo=world', {foo: ['hello', 'world']}],
@@ -33,7 +31,7 @@ const testCases = [
 ]
 
 
-function testParseQueryString(testCases) {
+const testParseQueryString = (testCases) => {
     console.log('Extracting the payload from a query string...\n')
     for (const [queryString, expectedPayload] of testCases) {
         console.log(
@@ -46,7 +44,7 @@ function testParseQueryString(testCases) {
 }
 
 
-function parseQueryString(queryString) {
+const parseQueryString = (queryString) => {
     const payload = {}
     queryString.slice(1).split('&').forEach(assignment => {
         let [key, val] = assignment.split('=')
@@ -70,7 +68,7 @@ function parseQueryString(queryString) {
 }
 
 
-function testMakeQueryString(testCases) {
+const testMakeQueryString = (testCases) => {
     console.log('Creating query strings from a payload...\n')
     for (const [expectedQueryString, payload] of testCases) {
         console.log(
@@ -83,7 +81,7 @@ function testMakeQueryString(testCases) {
 }
 
 
-function makeQueryString(payload) {
+const makeQueryString = (payload) => {
     let queryString = '?'
     for (const [key, val] of Object.entries(payload)) {
         if (!key || val === undefined)
