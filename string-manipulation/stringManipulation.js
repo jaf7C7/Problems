@@ -23,18 +23,20 @@ const testFunction = (functionUnderTest, valueTable) => {
 
 
 const capitalizeEveryOtherLetter = (str) => {
-    result = ''
-    for (const i in str)
-        result += (i % 2 == 0) ? str[i] : str[i].toUpperCase()
-    return result
+    const splitStr = str.split('')
+    for (const i in splitStr)
+        if (i % 2 == 1)
+            splitStr[i] = splitStr[i].toUpperCase()
+    return splitStr.join('')
 }
 
 
 const closeDivTags = (html) => {
-    result = html.split('div>')
-    for (const i in result)
-        result[i] += (i % 2 == 1) ? '/' : ''
-    return result.join('div>')
+    const splitHTML = html.split('div>')
+    for (const i in splitHTML)
+        if (i % 2 == 1)
+            splitHTML[i] = splitHTML[i].concat('/')
+    return splitHTML.join('div>')
 }
 
 
@@ -46,5 +48,6 @@ testFunction(capitalizeEveryOtherLetter, [
 ])
 
 testFunction(closeDivTags, [
-    ['<div>hello<div>', '<div>hello</div>']
+    ['<div>hello<div>', '<div>hello</div>'],
+    ['', '']
 ])
