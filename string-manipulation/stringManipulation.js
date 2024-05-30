@@ -22,23 +22,17 @@ const testFunction = (functionUnderTest, valueTable) => {
 }
 
 
-const forEachOdd = (str, callback, separator) => {
-    const splitStr = str.split(separator)
-    for (const i in splitStr)
-        if (i % 2 == 1)
-            splitStr[i] = callback(splitStr[i])
-    return splitStr.join(separator)
-}
+const forEachOdd = (str, callback, separator) => str.split(separator).map(
+    (element, index) => (index % 2 === 1) ? callback(element) : element
+).join(separator)
 
 
-const capitalizeEveryOtherLetter = (str) => {
-    return forEachOdd(str, (str) => str.toUpperCase(), '')
-}
+const capitalizeEveryOtherLetter = str => forEachOdd(
+    str, subStr => subStr.toUpperCase(), ''
+)
 
 
-const closeDivTags = (html) => {
-    return forEachOdd(html, (str) => str.concat('/'), 'div>')
-}
+const closeDivTags = html => forEachOdd(html, subStr => subStr + '/', 'div>')
 
 
 testFunction(capitalizeEveryOtherLetter, [
