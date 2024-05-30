@@ -16,7 +16,7 @@ const testFunction = (functionUnderTest, valueTable) => {
         console.log(
             functionUnderTest,
             output === expected ?
-            'PASSED' : `FAILED: ${input} !== ${output}`
+            'PASSED' : `FAILED: ${output} !== ${expected}`
         )
     }
 }
