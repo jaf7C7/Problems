@@ -10,14 +10,18 @@ A few thing we're looking for:
     - Users have a library of books that they can add to or remove from
     - Users can set a book from their library as active
     - The reading appication remembers where a user left off in a given book
-    - The reading application only displays a page of text at a time in the active book
-    - The platform is multi-user and the pool of available books are shared between users, though two users can be reading the same book in different places at the same time
+    - The reading application only displays a page of text at a time in the
+      active book
+    - The platform is multi-user and the pool of available books are shared
+      between users, though two users can be reading the same book in different
+      places at the same time
 
 Source: https://www.youtube.com/watch?v=1qw5ITr3k9E
 '''
 
 
 class Library:
+    """A user's collection of books and book metadata"""
 
     def __init__(self):
         self.books = []
@@ -37,7 +41,7 @@ class Library:
 
     def display_page(self):
         pages = self.active_book.paginate(self._get_page_size)
-        self.display(pages[self.active_book['current_page'])
+        self.display(pages[self.active_book['current_page']])
 
     def select_page(self, page_number):
         # TODO: Page not found
